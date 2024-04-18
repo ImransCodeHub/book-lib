@@ -1,0 +1,21 @@
+.centered-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* You can adjust the height as needed */
+  }
+  
+  .ant-input, .ant-select-selector, .ant-btn {
+    border-radius: 8px; /* Add rounded corners to inputs and button */
+    width: 300px; /* Adjust the width as needed */
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .ant-space-item {
+    width: 100%; /* Make items inside Space component fill the width */
+    display: flex;
+    justify-content: center; /* Center items horizontally */
+  }
+  

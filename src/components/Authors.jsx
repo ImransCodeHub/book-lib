@@ -2,17 +2,15 @@ import React, { useEffect, useState } from 'react'
 import { Card, Col, Row, Input, Typography, Space } from 'antd'
 import { PageLayout } from './PageLayout.tsx';
 import { useNavigate } from 'react-router-dom';
-import { SearchOutlined } from '@ant-design/icons'; // Import the SearchOutlined icon
+import { SearchOutlined } from '@ant-design/icons'; // SearchOutlined icon
 
 const { Title, Text } = Typography
 
-// This will handle the books library page - which will display all the books, and add books, and delete books, update books and create book.
-// This will also handle the search functionality for the books.
 export default function AuthorsPage() {
 
     const navigate = useNavigate();
     const [authors, setAuthors] = useState([]);
-    const [searchTerm, setSearchTerm] = useState(''); // Initialize searchTerm state variable
+    const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
         fetch('http://localhost:8080/api/v1/authors')
@@ -38,6 +36,7 @@ export default function AuthorsPage() {
             </div>
 
             <Input
+            style={{ width: '35%' }}
             placeholder="Search by authors..."
             prefix={<SearchOutlined />}
             onChange={e => setSearchTerm(e.target.value)}

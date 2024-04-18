@@ -55,9 +55,9 @@ const ViewBook = () => {
     }
 
     const handleDelete = async () => {
-        const confirmed = window.confirm(`Are you sure you want to delete this book?`);
+        //const confirmed = window.confirm(`Are you sure you want to delete this book?`);
 
-        if (!confirmed) {
+        //if (!confirmed) {
             try {
                 await fetch(`http://localhost:8080/api/v1/books/${isbn}`, {
                     method: 'DELETE',
@@ -67,7 +67,7 @@ const ViewBook = () => {
             catch (error) {
                 console.error('Error deleting book:', error);
             }
-        }
+        //}
     };
 
     if (!book) {
@@ -78,21 +78,21 @@ const ViewBook = () => {
         <>
             {action === 'view' && (
                 <div>
-                    <Title level={2}>{book.title}</Title>
+                    <Title level={2} style={{ textAlign: 'center' }}>{book.title}</Title>
                     <Space direction="vertical" style={{ width: '100%' }} size="large">
                         <Input
                             placeholder="Title"
-                            value={book.title}
+                            value={'ISBN: '+book.isbn}
                             disabled
                         />
                         <Input
                             placeholder="Edition Number"
-                            value={book.editionNumber}
+                            value={'Edition Number: '+ book.editionNumber}
                             disabled
                         />
                         <Input
                             placeholder="Copyright"
-                            value={book.copyright}
+                            value={'Copyright: '+book.copyright}
                             disabled
                         />
                         <Button type="primary" onClick={() => setAction('edit')}>Edit</Button>
@@ -102,7 +102,7 @@ const ViewBook = () => {
             )}
             {action === 'edit' && (
                 <div>
-                    <Title level={2}>{book.title}</Title>
+                    <Title level={2} style={{ textAlign: 'center' }}>{book.title}</Title>
                     <Space direction="vertical" style={{ width: '100%' }} size="large">
                         <Input
                             placeholder="Title"

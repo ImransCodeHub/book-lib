@@ -53,9 +53,9 @@ const ViewAuthor = () => {
     }
 
     const handleDelete = async () => {
-        const confirmed = window.confirm(`Are you sure you want to delete this author?`);
+        //const confirmed = window.confirm(`Are you sure you want to delete this author?`);
     
-        if (confirmed) {
+        //if (confirmed) {
             try {
                 await fetch(`http://localhost:8080/api/v1/authors/${id}`, {
                     method: 'DELETE',
@@ -64,7 +64,7 @@ const ViewAuthor = () => {
             } catch (error) {
                 console.error('Error deleting author:', error);
             }
-        }
+        //}
     };
 
     if (!author) {
@@ -75,9 +75,11 @@ const ViewAuthor = () => {
         <>
             {action === 'view' && (
                 <div>
-                    <Title level={2}>{author.firstName} {author.lastName}</Title>
+                    <Title level={2} style={{ textAlign: 'center' }}>{author.firstName} {author.lastName}</Title>
+                    <Space direction="vertical" style={{ width: '100%' }} size="large">
                     <Button onClick={() => setAction('edit')}>Edit</Button>
                     <Button onClick={handleDelete}>Delete</Button>
+                    </Space>
                 </div>
             )}
             {action === 'edit' && (
